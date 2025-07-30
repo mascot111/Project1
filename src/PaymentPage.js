@@ -29,7 +29,7 @@ function PaymentPage() {
           <p key={index}>{network} Account: <strong>{acc}</strong></p>
         ))}
         <h3>Step 2: Go to your {network} app and pay</h3>
-        <p><strong>Total Amount Payable:</strong> GHS {LOAN_AMOUNT}</p>
+       
         <h3>Step 3: Use this Loan number as Reference</h3>
         <p><strong>Reference:</strong> {REFERENCE_NUMBER}</p>
         <h3>Step 4: Enter your Transaction ID or SMS below</h3>
