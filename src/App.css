@@ -1,3 +1,14 @@
+.alert-banner {
+  background: #dc2626;   /* strong red */
+  color: white;          /* white text */
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
+}
 
 body {
   font-family: Arial, sans-serif;
@@ -5,23 +16,106 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .container {
-  max-width: 500px;
+  max-width: 800px; /* wider like your friend's */
   margin: 20px auto;
   background: #fff;
-  padding: 20px;
+  padding: 25px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-h2 { text-align: center; color: #333; }
-.warning-text { color: red; font-size: 14px; margin-bottom: 15px; }
-.network-buttons { display: flex; flex-direction: column; gap: 10px; }
-.network-buttons button { padding: 15px; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; background: #f2f2f2; transition: 0.3s; }
-.network-buttons button:hover { background: #ddd; }
-.back-btn { background: #007bff; color: white; border: none; padding: 10px 15px; margin-bottom: 15px; border-radius: 5px; cursor: pointer; }
-textarea { width: 100%; height: 80px; padding: 10px; margin: 10px 0; font-size: 14px; border: 1px solid #ccc; border-radius: 5px; }
-.error { color: red; font-size: 14px; }
-.submit-btn { width: 100%; padding: 12px; background: #007bff; color: white; font-size: 16px; border: none; border-radius: 5px; cursor: pointer; margin-top: 10px; }
-.submit-btn:hover { background: #0056b3; }
-.success-box { background: #e6ffe6; padding: 15px; border: 1px solid #b3ffb3; border-radius: 8px; text-align: center; margin-top: 20px; }
-.confirmation-box { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #f8f8f8; border: 1px solid #ddd; font-size: 14px; }
+
+h2 {
+  text-align: center;
+  color: #333;
+  font-size: 1.6rem;
+}
+
+.warning-text {
+  color: red;
+  font-size: 15px;
+  margin-bottom: 18px;
+  font-weight: 500;
+}
+
+.network-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.network-buttons button {
+  padding: 16px;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #f2f2f2;
+  transition: 0.3s;
+}
+
+.network-buttons button:hover {
+  background: #ddd;
+}
+
+.back-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+textarea {
+  width: 100%;
+  height: 90px;
+  padding: 12px;
+  margin: 12px 0;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #007bff;
+  color: white;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 12px;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+.success-box {
+  background: #e6ffe6;
+  padding: 16px;
+  border: 1px solid #b3ffb3;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 22px;
+  font-size: 15px;
+}
+
+.confirmation-box {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
