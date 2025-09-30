@@ -14,7 +14,7 @@ function PaymentPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!message.includes(REFERENCE_NUMBER)) {
-      setError("Invalid message. Please enter the exact reference number.");
+      setError("⚠️ Invalid message. Please make sure it includes the correct reference number.");
     } else {
       setError("");
       navigate("/confirmation", { state: { message } });
@@ -23,31 +23,45 @@ function PaymentPage() {
 
   return (
     <div className="container">
-      {/* Fraud alert banner */}
-      <div className="alert-banner">
-        ⚠️ Beware of fraud! We never ask you to pay into personal accounts.
-        Use only the official numbers shown below.
-      </div>
-
+      {/* Back button */}
       <button className="back-btn" onClick={() => navigate("/")}>
         ← Back
       </button>
 
-      <h2>{normalizedNetwork} Payment</h2>
+      {/* Page heading */}
+      <h2>{normalizedNetwork} Payment Instructions</h2>
+
+      {/* Fraud Alert Banner right below the heading */}
+      <div className="alert-banner">
+        ⚠️ We have recently become aware of fraudulent individuals impersonating our company's repayment links in an attempt to deceive users into transferring funds to their accounts, resulting in financial losses for the users.  
+        <br /><br />
+        To ensure the safety of your funds, please verify that the repayment link you are using is from our official channels.
+      </div>
+
+      {/* Instructions */}
       <p className="warning-text">
-        Please send <strong>GHS {LOAN_AMOUNT}</strong> to one of the official {normalizedNetwork} numbers below:
+        Please send <strong>GHS {LOAN_AMOUNT}</strong> only to one of the official {normalizedNetwork} numbers below:
       </p>
 
+      {/* Account numbers */}
       {ACCOUNTS[normalizedNetwork] ? (
-        ACCOUNTS[normalizedNetwork].map((acc, index) => (
-          <p key={index}>
-            {normalizedNetwork} Account: <strong>{acc}</strong>
-          </p>
-        ))
+        <div className="account-list">
+          {ACCOUNTS[normalizedNetwork].map((acc, index) => (
+            <p key={index}>
+              {normalizedNetwork} Account: <strong>{acc}</strong>
+            </p>
+          ))}
+        </div>
       ) : (
         <p className="error">⚠️ No accounts found for this network.</p>
       )}
 
+      {/* Reference number */}
+      <div className="reference-box">
+        <p><strong>Reference Number:</strong> {REFERENCE_NUMBER}</p>
+      </div>
+
+      {/* Form */}
       <form onSubmit={handleSubmit}>
         <textarea
           placeholder="Paste your payment confirmation message here..."
@@ -60,6 +74,7 @@ function PaymentPage() {
         </button>
       </form>
 
+      {/* Sample message */}
       <div className="success-box">
         <strong>Sample Confirmation Message:</strong>
         <p>{SAMPLE_MESSAGE}</p>
