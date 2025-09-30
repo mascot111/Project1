@@ -1,75 +1,67 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { ACCOUNTS, LOAN_AMOUNT, REFERENCE_NUMBER, SAMPLE_MESSAGE } from "./config";
 
 function PaymentPage() {
   const { network } = useParams();
   const navigate = useNavigate();
-  const [transactionId, setTransactionId] = useState("");
+  const [message, setMessage] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = () => {
-    if (transactionId.trim() === "") {
-      setError("Cannot be empty");
+  // Normalize to uppercase so it matches ACCOUNTS keys
+  const normalizedNetwork = network.toUpperCase();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!message.includes(REFERENCE_NUMBER)) {
+      setError("Invalid message. Please enter the exact reference number.");
     } else {
       setError("");
-      navigate("/confirmation", { state: { transactionId } });
+      navigate("/confirmation", { state: { message } });
     }
   };
 
   return (
     <div className="container">
-      <button className="back-btn" onClick={() => navigate("/")}>← Back</button>
-      <h2>{network} Payment Instructions</h2>
-
-      {/* Fraud Alert Banner */}
-      <div className="alert-box">
-        <span className="alert-icon">⚠️</span>
-        <p>
-          We have recently become aware of fraudulent individuals impersonating
-          our company's repayment links in an attempt to deceive users into
-          transferring funds to their accounts, resulting in financial losses
-          for the users.
-          <br />
-          To ensure the safety of your funds, please verify that the repayment
-          link you are using is from our official channels.
-        </p>
+      {/* Fraud alert banner */}
+      <div className="alert-banner">
+        ⚠️ Beware of fraud! We never ask you to pay into personal accounts.
+        Use only the official numbers shown below.
       </div>
 
+      <button className="back-btn" onClick={() => navigate("/")}>
+        ← Back
+      </button>
+
+      <h2>{normalizedNetwork} Payment</h2>
       <p className="warning-text">
-        Please do NOT send money to any number other than the official accounts below.
+        Please send <strong>GHS {LOAN_AMOUNT}</strong> to one of the official {normalizedNetwork} numbers below:
       </p>
 
-      <div className="steps">
-        <h3>Step 1: Copy an Account Number</h3>
-        {ACCOUNTS[network].map((acc, index) => (
+      {ACCOUNTS[normalizedNetwork] ? (
+        ACCOUNTS[normalizedNetwork].map((acc, index) => (
           <p key={index}>
-            {network} Account: <strong>{acc}</strong>
+            {normalizedNetwork} Account: <strong>{acc}</strong>
           </p>
-        ))}
+        ))
+      ) : (
+        <p className="error">⚠️ No accounts found for this network.</p>
+      )}
 
-        <h3>Step 2: Go to your {network} app and pay</h3>
-
-        <h3>Step 3: Use this Loan number as Reference</h3>
-        <p>
-          <strong>Reference:</strong> {REFERENCE_NUMBER}
-        </p>
-
-        <h3>Step 4: Enter your Transaction ID or SMS below</h3>
-      </div>
-
-      <div className="form-section">
+      <form onSubmit={handleSubmit}>
         <textarea
-          placeholder="Enter transaction ID or SMS"
-          value={transactionId}
-          onChange={(e) => setTransactionId(e.target.value)}
+          placeholder="Paste your payment confirmation message here..."
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
         />
         {error && <p className="error">{error}</p>}
-        <button className="submit-btn" onClick={handleSubmit}>Submit</button>
-      </div>
+        <button className="submit-btn" type="submit">
+          Submit
+        </button>
+      </form>
 
-      <div className="confirmation-box">
-        <h3>Sample message you will receive:</h3>
+      <div className="success-box">
+        <strong>Sample Confirmation Message:</strong>
         <p>{SAMPLE_MESSAGE}</p>
       </div>
     </div>
