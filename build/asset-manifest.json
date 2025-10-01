@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.d4460464.css",
+    "main.css": "/static/css/main.af313318.css",
     "main.js": "/static/js/main.2e728a5d.js",
     "static/media/airteltigo.png": "/static/media/airteltigo.bae2a21e1453a25497dc.png",
     "index.html": "/index.html",
-    "main.d4460464.css.map": "/static/css/main.d4460464.css.map",
+    "main.af313318.css.map": "/static/css/main.af313318.css.map",
     "main.2e728a5d.js.map": "/static/js/main.2e728a5d.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4460464.css",
+    "static/css/main.af313318.css",
     "static/js/main.2e728a5d.js"
   ]
 }
