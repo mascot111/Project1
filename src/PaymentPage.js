@@ -37,7 +37,7 @@ function PaymentPage() {
       </div>
 
       <p className="warning-text">
-        Please send <strong>GHS {LOAN_AMOUNT}</strong> only to one of the official {normalizedNetwork} numbers below:
+        Please send your money only to one of the official {normalizedNetwork} numbers below:
       </p>
 
       {/* Safely render accounts only if array exists */}
